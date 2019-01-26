@@ -3,40 +3,51 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass="App\Repository\AdherentRepository")
  */
 class Adherent
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    private $identifiant;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
     private $nom;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
     private $prenom;
 
-    /**
-     * @ORM\Column(type="string", length=15)
-     */
     private $telephone;
 
-    public function getId(): ?int
+    /**
+     * Adherent constructor.
+     * @param $identifiant
+     * @param $nom
+     * @param $prenom
+     * @param $telephone
+     */
+    public function __construct($identifiant, $nom, $prenom, $telephone)
     {
-        return $this->id;
+        $this->identifiant = $identifiant;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->telephone = $telephone;
     }
+
+
+    public function getIdentifiant(): ?int
+    {
+        return $this->identifiant;
+    }
+
+    /**
+     * @param mixed $identifiant
+     * @return Adherent
+     */
+    public function setIdentifiant($identifiant)
+    {
+        $this->identifiant = $identifiant;
+        return $this;
+    }
+
 
     public function getNom(): ?string
     {
