@@ -14,6 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class CSVService
 {
+
     const PATHCSV = __DIR__.'/../../src/data/data.csv';
 
     /**
@@ -58,11 +59,17 @@ class CSVService
             }
             fclose($handle);
 
+            // on trie le tableau par ordre alphabétique
+            $nom = array_column($data, 'nom');
+            $prenom = array_column($data, 'prenom');
+            array_multisort($nom, SORT_ASC, $prenom,SORT_ASC, $data );
+
             // on met l'identifiant comme clef da tableau associatif principale pour facilité la recherche
             $temp = [];
             foreach ($data as $ligne) {
-                $temp[$ligne['identifiant']] = $ligne;
+                $temp[strval($ligne['identifiant'])] = $ligne;
             }
+
             $data = $temp;
         }
 
@@ -100,8 +107,9 @@ class CSVService
      */
     public function getOneRow ($ligneNumber) {
         $return = null;
-        if (key_exists($ligneNumber, $this->dataCSV)){
-            $return = $this->dataCSV[$ligneNumber];
+        $tring = strval($ligneNumber);
+        if (key_exists($tring, $this->dataCSV)){
+            $return = $this->dataCSV[$tring];
         }
         return $return;
     }
