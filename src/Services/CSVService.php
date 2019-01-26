@@ -57,7 +57,15 @@ class CSVService
                 $cpt++;
             }
             fclose($handle);
+
+            // on met l'identifiant comme clef da tableau associatif principale pour facilité la recherche
+            $temp = [];
+            foreach ($data as $ligne) {
+                $temp[$ligne['identifiant']] = $ligne;
+            }
+            $data = $temp;
         }
+
         return $data;
     }
 
