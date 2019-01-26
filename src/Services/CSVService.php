@@ -101,7 +101,7 @@ class CSVService
     /**
      * retourne un élément du tableau issu CVS sous forme de tableau ou null si la ligne n'existe pas
      *
-     * @param $ligneNumbre
+     * @param $ligneNumber
      * @return array|null
      * auteur : Charles-emmanuel DEZANDEE  <cdezandee@gmail.com>
      */
@@ -117,7 +117,7 @@ class CSVService
     /**
      * retourne le csv sous forme de tableau
      *
-     * @return |null
+     * @return array|null
      * auteur : Charles-emmanuel DEZANDEE  <cdezandee@gmail.com>
      */
     public function getAllRows () {

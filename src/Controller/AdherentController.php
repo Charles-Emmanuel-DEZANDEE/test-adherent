@@ -21,7 +21,7 @@ class AdherentController extends AbstractController
     /**
      * @param CSVService $CSVService
      * @param AdherentService $adherentService
-     * @param null $id
+     * @param int|null $id
      * @return JsonResponse
      * @Route("/adherents/{id}", name="adherent")
      * auteur : Charles-emmanuel DEZANDEE  <cdezandee@gmail.com>
